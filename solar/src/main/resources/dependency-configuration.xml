@@ -9,7 +9,7 @@
     </bean>
 
     <bean id="panelService" class="learn.solar.domain.PanelService">
-        <constructor-arg ref="panelRepostory" />
+        <constructor-arg ref="panelRepository" />
     </bean>
 
     <bean id="io" class="learn.solar.ui.ConsoleIO" />

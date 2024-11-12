@@ -1,22 +1,16 @@
 package learn.solar;
 
-import learn.solar.data.PanelFileRepository;
-import learn.solar.domain.PanelService;
-import learn.solar.ui.ConsoleIO;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import learn.solar.ui.Controller;
-import learn.solar.ui.View;
 
 public class App {
 
     public static void main(String[] args) {
-        PanelFileRepository repository = new PanelFileRepository("./solar/data/panels.txt");
-        PanelService service = new PanelService(repository);
+        ApplicationContext context = new ClassPathXmlApplicationContext("dependency-configuration.xml");
 
-        ConsoleIO io = new ConsoleIO();
-        View view = new View(io);
-
-        Controller controller = new Controller(view, service);
-
+        Controller controller = context.getBean(Controller.class);
         // and so it begins...1
         controller.run();
     }
